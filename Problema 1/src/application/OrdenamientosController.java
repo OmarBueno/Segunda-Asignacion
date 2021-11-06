@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import fes.aragon.except.IndiceFueraDeRango;
 import fes.aragon.utilerias.dinamicas.listasimple.ListaSimple;
+import fes.aragon.utilerias.dinamicas.pila.Pila;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
@@ -73,7 +74,6 @@ public class OrdenamientosController implements Initializable {
 	private XYChart.Series<String, Number> seriesQI;
 	private ScheduledExecutorService scheduledExecutorServiceQI;
 
-	// Event Listener on Button[#accion].onAction
 	@FXML
 	public void evento(ActionEvent event) {
 		scheduledExecutorServiceB = Executors.newSingleThreadScheduledExecutor();
@@ -97,10 +97,8 @@ public class OrdenamientosController implements Initializable {
 						} catch (IndiceFueraDeRango e) {
 							e.printStackTrace();
 						}
-
 					}
 				}
-
 			});
 		}, 0, 1, TimeUnit.SECONDS);
 		scheduledExecutorServiceS = Executors.newSingleThreadScheduledExecutor();
@@ -168,6 +166,82 @@ public class OrdenamientosController implements Initializable {
 			Platform.runLater(() -> {
 				try {
 					reduceRecursivo(0, listaQ.getLongitud() - 1);
+				} catch (IndiceFueraDeRango e) {
+					e.printStackTrace();
+				}
+			});
+		}, 0, 1, TimeUnit.SECONDS);
+		scheduledExecutorServiceQI = Executors.newSingleThreadScheduledExecutor();
+		scheduledExecutorServiceQI.scheduleAtFixedRate(() -> {
+			Platform.runLater(() -> {
+				try {
+					int tope, ini, fin, pos = 0;
+					Pila<Integer> pMenor = new Pila<>();
+					Pila<Integer> pMayor = new Pila<>();
+					tope = 1;
+					pMenor.insertar(0);
+					pMayor.insertar(listaQI.getLongitud() - 1);
+					while (tope > 0) {
+						ini = pMenor.extraer();
+						fin = pMayor.extraer();
+						tope--;
+						pos = reduceItertivo(ini, fin, pos);
+						if (ini < (pos - 1)) {
+							tope++;
+							pMenor.insertar(ini);
+							pMayor.insertar(pos - 1);
+						}
+						if (fin > (pos + 1)) {
+							tope++;
+							pMenor.insertar(pos + 1);
+							pMayor.insertar(fin);
+						}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+		}, 0, 1, TimeUnit.SECONDS);
+		scheduledExecutorServiceSa = Executors.newSingleThreadScheduledExecutor();
+		scheduledExecutorServiceSa.scheduleAtFixedRate(() -> {
+			Platform.runLater(() -> {
+				try {
+					int izquierda = 1;
+					int derecha = listaSa.getLongitud() - 1;
+					int k = listaSa.getLongitud() - 1;
+					while (derecha >= izquierda) {
+						for (int i = derecha; i >= izquierda; i--) {
+							if (listaSa.obtenerNodo(i - 1) > listaSa.obtenerNodo(i)) {
+								Integer aux = listaSa.obtenerNodo(i - 1);
+								listaSa.asignar(listaSa.obtenerNodo(i), i - 1);
+								listaSa.asignar(aux, i);
+								String tmpEstilo = seriesSa.getData().get(i - 1).getNode().getStyle();
+								String tmpEstiloDos = seriesSa.getData().get(i).getNode().getStyle();
+								seriesSa.getData().get(i - 1).getNode().setStyle(tmpEstilo);
+								seriesSa.getData().get(i).getNode().setStyle(tmpEstiloDos);
+								seriesSa.getData().get(i - 1).setYValue(listaSa.obtenerNodo(i - 1));
+								seriesSa.getData().get(i).setYValue(listaSa.obtenerNodo(i));
+								k = i;
+							}
+						}
+						izquierda = k + 1;
+						for (int i = izquierda; i <= derecha; i++) {
+							if (listaSa.obtenerNodo(i - 1) > listaSa.obtenerNodo(i)) {
+								Integer aux = listaSa.obtenerNodo(i - 1);
+								listaSa.asignar(listaSa.obtenerNodo(i), i - 1);
+								listaSa.asignar(aux, i);
+								String tmpEstilo = seriesSa.getData().get(i - 1).getNode().getStyle();
+								String tmpEstiloDos = seriesSa.getData().get(i).getNode().getStyle();
+								seriesSa.getData().get(i - 1).getNode().setStyle(tmpEstilo);
+								seriesSa.getData().get(i).getNode().setStyle(tmpEstiloDos);
+								seriesSa.getData().get(i - 1).setYValue(listaSa.obtenerNodo(i - 1));
+								seriesSa.getData().get(i).setYValue(listaSa.obtenerNodo(i));
+								k = i;
+							}
+						}
+						derecha = k - 1;
+						break;
+					}
 				} catch (IndiceFueraDeRango e) {
 					e.printStackTrace();
 				}
@@ -427,6 +501,53 @@ public class OrdenamientosController implements Initializable {
 		if (fin > (pos + 1)) {
 			reduceRecursivo(pos + 1, fin);
 		}
-
+	}
+	public int reduceItertivo(int ini, int fin, int pos) throws IndiceFueraDeRango {
+		int izq = 0;
+		int der = 0;
+		int aux = 0;
+		boolean band;
+		izq = ini;
+		der = fin;
+		pos = ini;
+		band = true;
+		while (band == true) {
+			while (listaQI.obtenerNodo(pos) <= listaQI.obtenerNodo(der) && pos != der) {
+				der--;
+			}
+			if (pos == der) {
+				band = false;
+			} else {
+				aux = listaQI.obtenerNodo(pos);
+				listaQI.asignar(listaQI.obtenerNodo(der), pos);
+				listaQI.asignar(aux, der);
+				String tmpEstilo = seriesQI.getData().get(der).getNode().getStyle();
+				String tmpEstiloDos = seriesQI.getData().get(pos).getNode().getStyle();
+				seriesQI.getData().get(pos).getNode().setStyle(tmpEstilo);
+				seriesQI.getData().get(der).getNode().setStyle(tmpEstiloDos);
+				seriesQI.getData().get(pos).setYValue(listaQI.obtenerNodo(pos));
+				seriesQI.getData().get(der).setYValue(listaQI.obtenerNodo(der));
+				pos = der;
+				while (listaQI.obtenerNodo(pos) >= listaQI.obtenerNodo(izq) && pos != izq) {
+					izq++;
+				}
+				if (pos == izq) {
+					band = false;
+				} else {
+					aux = listaQI.obtenerNodo(pos);
+					listaQI.asignar(listaQI.obtenerNodo(izq), pos);
+					listaQI.asignar(aux, izq);
+					tmpEstilo = seriesQI.getData().get(izq).getNode().getStyle();
+					tmpEstiloDos = seriesQI.getData().get(pos).getNode().getStyle();
+					seriesQI.getData().get(pos).getNode().setStyle(tmpEstilo);
+					seriesQI.getData().get(izq).getNode().setStyle(tmpEstiloDos);
+					seriesQI.getData().get(pos).setYValue(listaQI.obtenerNodo(pos));
+					seriesQI.getData().get(izq).setYValue(listaQI.obtenerNodo(izq));
+					pos = izq;
+				}
+			}
+			break;
+		}
+		return pos;
 	}
 }
