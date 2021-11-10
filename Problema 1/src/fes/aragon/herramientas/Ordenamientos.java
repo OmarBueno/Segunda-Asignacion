@@ -40,8 +40,8 @@ public class Ordenamientos {
 					if (listaS.obtenerNodo(j) < menor) {
 						menor = listaS.obtenerNodo(j);
 						k = j;
+						break;
 					}
-					break;
 				}
 				listaS.asignar(listaS.obtenerNodo(i), k);
 				listaS.asignar(menor, i);

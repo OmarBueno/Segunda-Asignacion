@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VistaController">
+   <children>
+      <Label layoutX="39.0" layoutY="28.0" text="Problema 2 y 3">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="img" fitHeight="97.0" fitWidth="109.0" layoutX="501.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../fes/aragon/recursos/fes.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtPosfija" layoutX="357.0" layoutY="221.0" prefHeight="39.0" prefWidth="244.0">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></TextField>
+      <Label layoutX="403.0" layoutY="165.0" text="Expresion posfija">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblResultado" layoutX="222.0" layoutY="286.0" text="Resultado:">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnCalcular" layoutX="266.0" layoutY="367.0" mnemonicParsing="false" onAction="#calcular" prefHeight="46.0" prefWidth="104.0" text="Calcular" />
+      <Button fx:id="btnSalir" layoutX="451.0" layoutY="367.0" mnemonicParsing="false" onAction="#salir" prefHeight="46.0" prefWidth="104.0" text="Salir" />
+      <TextField fx:id="txtInterfija" layoutX="30.0" layoutY="216.0" prefHeight="39.0" prefWidth="244.0">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </TextField>
+      <Label layoutX="61.0" layoutY="165.0" text="Expresion Interfija">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnConvertir" layoutX="61.0" layoutY="367.0" mnemonicParsing="false" onAction="#convertir" prefHeight="46.0" prefWidth="104.0" text="Convertir" />
+   </children>
+</Pane>
