@@ -62,6 +62,18 @@ public class Operaciones {
 			char c = cadena.charAt(i);
 			if (c >= '0' && c <= '9') {
 				posfija += c;
+				if (i == cadena.length() - 1) {
+					break;
+				}
+				char d = cadena.charAt(i + 1);
+				while (d >= '0' && d <= '9') {
+					posfija += d;
+					i++;
+					if (i == cadena.length() - 1) {
+						break;
+					}
+					d = cadena.charAt(i + 1);
+				}
 				posfija += ' ';
 			} else {
 				while (!pila.estaVacia() && precedencia(pila.elementoSuperior(), c)) {

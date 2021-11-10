@@ -6,15 +6,28 @@ public class TestConversion1 {
 
 	public static void main(String[] args) throws Exception {
 		Pila<Character> pila = new Pila<>();
-		String cadena = "(5/3/(4+2))";
+		String cadena = "(543+2)*(7/(3+4))+54*301";
+		System.out.println("tamaño cadena: " + cadena.length());
 		String posfija = "";
 		for (int i = 0; i < cadena.length(); i++) {
 			char c = cadena.charAt(i);
 			System.out.println("c comun: " + c);
 			if (c >= '0' && c <= '9') {
 				posfija += c;
-				posfija+=' ';
-				System.out.println("c del if " + c);
+				if (i == cadena.length() - 1) {
+					break;
+				}
+				char d = cadena.charAt(i + 1);
+				while (d >= '0' && d <= '9') {
+					posfija += d;
+					i++;
+					System.out.println("i: " + i);
+					if (i == cadena.length() - 1) {
+						break;
+					}
+					d = cadena.charAt(i + 1);
+				}
+				posfija += ' ';
 			} else {
 				if (!pila.estaVacia()) {
 					System.out.println("elemento superior:" + pila.elementoSuperior());
@@ -23,7 +36,7 @@ public class TestConversion1 {
 				while (!pila.estaVacia() && precedencia(pila.elementoSuperior(), c)) {
 					System.out.println("Entro al while");
 					posfija += pila.extraer();
-					posfija+=' ';
+					posfija += ' ';
 				}
 				if (pila.estaVacia() || c != ')') {
 					pila.insertar(c);
@@ -34,7 +47,7 @@ public class TestConversion1 {
 		}
 		while (!pila.estaVacia()) {
 			posfija += pila.extraer();
-			posfija+=' ';
+			posfija += ' ';
 		}
 		System.out.println("Salida: " + posfija);
 
