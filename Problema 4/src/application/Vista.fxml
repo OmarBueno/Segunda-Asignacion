@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VistaController">
+   <children>
+      <ImageView fx:id="imagen" onMouseClicked="#eventoRaton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@recursos/dragon.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="controlPane" layoutY="656.0" prefHeight="136.0" prefWidth="599.0">
+         <children>
+            <ColorPicker fx:id="colorPicker" layoutX="28.0" layoutY="62.0" prefHeight="47.0" prefWidth="86.0" />
+            <Label layoutX="31.0" layoutY="19.0" text="Color:">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="cmbLLamada" layoutX="159.0" layoutY="66.0" prefHeight="47.0" prefWidth="150.0" />
+            <Label layoutX="159.0" layoutY="19.0" text="Llamada:">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblLlamada" layoutX="364.0" layoutY="19.0">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtLlamadas" layoutX="358.0" layoutY="63.0" prefHeight="47.0" prefWidth="149.0" />
+         </children>
+      </Pane>
+   </children>
+</Pane>
