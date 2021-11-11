@@ -63,6 +63,7 @@ public class Operaciones {
 			if (c >= '0' && c <= '9') {
 				posfija += c;
 				if (i == cadena.length() - 1) {
+					posfija += ' ';
 					break;
 				}
 				char d = cadena.charAt(i + 1);
@@ -75,7 +76,7 @@ public class Operaciones {
 					d = cadena.charAt(i + 1);
 				}
 				posfija += ' ';
-			} else {
+			} else if (c >= '(' && c <= '/') {
 				while (!pila.estaVacia() && precedencia(pila.elementoSuperior(), c)) {
 					posfija += pila.extraer();
 					posfija += ' ';
@@ -85,6 +86,13 @@ public class Operaciones {
 				} else {
 					pila.extraer();
 				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null,
+						"Error en la entrada, debe ingresar solo digitos y operadores",
+						"Error", JOptionPane.ERROR_MESSAGE);
+				posfija = "";
+				break;		
 			}
 		}
 		while (!pila.estaVacia()) {
