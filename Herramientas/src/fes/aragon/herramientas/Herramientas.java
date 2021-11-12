@@ -5,7 +5,7 @@ import java.util.concurrent.ScheduledExecutorService;
 
 import fes.aragon.except.IndiceFueraDeRango;
 import fes.aragon.utilerias.dinamicas.listasimple.ListaSimple;
-
+import fes.aragon.utilerias.dinamicas.pila.Pila;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;

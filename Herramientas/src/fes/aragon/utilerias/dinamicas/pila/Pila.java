@@ -2,15 +2,16 @@ package fes.aragon.utilerias.dinamicas.pila;
 
 import fes.aragon.utilerias.dinamicas.listasimple.ListaSimple;
 
-	/**
-	 * Clase que crea una Pila
-	 *
-	 * @author Equipo 9 Bueno Zaldivar Omar Alejandro y Sol Martinez Edith
-	 *
-	 * @param <E> Tipo de datos a almacenar
-	 */
+/**
+ * Clase que crea una Pila
+ *
+ * @author Equipo 9 Bueno Zaldivar Omar Alejandro y Sol Martinez Edith
+ *
+ * @param <E> Tipo de datos a almacenar
+ */
 public class Pila<E> {
 	private ListaSimple<E> pila = new ListaSimple<>();
+	private int datos = 0;
 
 	/**
 	 * elimina los elementos de la pila
@@ -69,6 +70,15 @@ public class Pila<E> {
 			throw new Exception("Pila Vacia");
 		}
 		return tmp;
+	}
+
+	/**
+	 * Metodo que retorna la cantidad de elementos en la pila
+	 * 
+	 * @return
+	 */
+	public int getDatos() {
+		return datos;
 	}
 
 }
