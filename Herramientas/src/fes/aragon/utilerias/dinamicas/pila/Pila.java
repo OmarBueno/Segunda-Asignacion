@@ -21,7 +21,7 @@ public class Pila<E> {
 	}
 
 	/**
-	 * Intica si la pila esta vacia
+	 * Indica si la pila esta vacia
 	 * 
 	 * @return True si es vacia False si tiene elementos
 	 */
@@ -75,7 +75,7 @@ public class Pila<E> {
 	/**
 	 * Metodo que retorna la cantidad de elementos en la pila
 	 * 
-	 * @return
+	 * @return Cantidad de datos
 	 */
 	public int getDatos() {
 		return datos;

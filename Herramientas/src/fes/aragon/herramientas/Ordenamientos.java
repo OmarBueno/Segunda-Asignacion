@@ -5,8 +5,20 @@ import fes.aragon.utilerias.dinamicas.listasimple.ListaSimple;
 import fes.aragon.utilerias.dinamicas.pila.Pila;
 import javafx.scene.chart.XYChart;
 
+/**
+ * Clase auxiliar del problema 1 Realiza los ordenamientos
+ * 
+ * @author Equipo 9 Bueno Zaldivar Omar Alejandro y Sol Martinez Edith
+ *
+ */
 public class Ordenamientos {
-	
+
+	/**
+	 * Metodo de ordenamiento burbuja
+	 * 
+	 * @param listaB  Lista Burbuja
+	 * @param seriesB Series Burbuja
+	 */
 	public static void burbuja(ListaSimple<Integer> listaB, XYChart.Series<String, Number> seriesB) {
 		for (int i = 0; i < listaB.getLongitud(); i++) {
 			for (int j = listaB.getLongitud() - 1; j > i; j--) {
@@ -29,6 +41,13 @@ public class Ordenamientos {
 			}
 		}
 	}
+
+	/**
+	 * Metodo de ordenamiento Seleccion
+	 * 
+	 * @param listaS  Lista Seleccion
+	 * @param seriesS Series Seleccion
+	 */
 	public static void seleccion(ListaSimple<Integer> listaS, XYChart.Series<String, Number> seriesS) {
 		int menor;
 		int k;
@@ -56,6 +75,13 @@ public class Ordenamientos {
 			}
 		}
 	}
+
+	/**
+	 * Metodo de ordenamiento Inswecion
+	 * 
+	 * @param listaI  Lista Insercion
+	 * @param seriesI Series Insercion
+	 */
 	public static void insercion(ListaSimple<Integer> listaI, XYChart.Series<String, Number> seriesI) {
 		int aux;
 		int k;
@@ -76,7 +102,13 @@ public class Ordenamientos {
 			}
 		}
 	}
-	
+
+	/**
+	 * Metodo de ordenamiento Sacudida
+	 * 
+	 * @param listaSa  Lista Sacudida
+	 * @param seriesSa Series Sacudida
+	 */
 	public static void sacudida(ListaSimple<Integer> listaSa, XYChart.Series<String, Number> seriesSa) {
 		try {
 			int izquierda = 1;
@@ -120,6 +152,15 @@ public class Ordenamientos {
 		}
 	}
 
+	/**
+	 * Metodo de ordenamiento Quick Sort
+	 * 
+	 * @param ini     inicio
+	 * @param fin     fin
+	 * @param listaQ  Lista Quick Sort
+	 * @param seriesQ Series Quick Sort
+	 * @throws IndiceFueraDeRango Error de rango
+	 */
 	public static void reduceRecursivo(int ini, int fin, ListaSimple<Integer> listaQ,
 			XYChart.Series<String, Number> seriesQ) throws IndiceFueraDeRango {
 		int izq = ini;
@@ -170,6 +211,12 @@ public class Ordenamientos {
 		}
 	}
 
+	/**
+	 * Metodo de ordenamiento Quick Sort Iterativo
+	 * 
+	 * @param listaQI  Lista Quick Sort
+	 * @param seriesQI Series Quick Sort
+	 */
 	public static void rapidoIterativo(ListaSimple<Integer> listaQI, XYChart.Series<String, Number> seriesQI) {
 		try {
 			int tope, ini, fin, pos = 0;
@@ -199,6 +246,17 @@ public class Ordenamientos {
 		}
 	}
 
+	/**
+	 * Metodo de ordenamiento Quick Sort Iterativo
+	 * 
+	 * @param ini      inicio
+	 * @param fin      fin
+	 * @param pos      posicion
+	 * @param listaQI  Lista Quick Sort
+	 * @param seriesQI Series Quick Sort
+	 * @return posicion
+	 * @throws IndiceFueraDeRango Error de rango
+	 */
 	public static int reduceItertivo(int ini, int fin, int pos, ListaSimple<Integer> listaQI,
 			XYChart.Series<String, Number> seriesQI) throws IndiceFueraDeRango {
 		int izq = 0;

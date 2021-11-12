@@ -12,9 +12,20 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
 
+/**
+ * Clase auxiliar para el problema 1
+ * 
+ * @author Equipo 9 Bueno Zaldivar Omar Alejandro y Sol Martinez Edith
+ *
+ */
 public class Herramientas {
 	private static ListaSimple<Integer> listaAux = new ListaSimple<>();
 
+	/**
+	 * Metodo que apaga los hilos del programa
+	 * 
+	 * @param hilos Hilos a apagar
+	 */
 	public static void apagarHilos(ScheduledExecutorService... hilos) {
 		for (ScheduledExecutorService hilo : hilos) {
 			if (hilo != null) {
@@ -23,12 +34,25 @@ public class Herramientas {
 		}
 	}
 
+	/**
+	 * Metodo que limpia las series de las graficas
+	 * 
+	 * @param series Series a limpiar
+	 */
 	public static void limpiarSeries(XYChart.Series<String, Number>... series) {
 		for (Series<String, Number> serie : series) {
 			serie.getData().clear();
 		}
 	}
 
+	/**
+	 * Metodo que llena los datos de las graficas
+	 * 
+	 * @param y      Eje Y
+	 * @param x      Eje X
+	 * @param area   Grafica
+	 * @param metodo Nombre del metodo de la grafica
+	 */
 	public static void llenarDatos(NumberAxis y, CategoryAxis x, BarChart<String, Number> area, String metodo) {
 		y.setLabel("Valor");
 		y.setAnimated(false);
@@ -38,6 +62,14 @@ public class Herramientas {
 		area.setAnimated(false);
 	}
 
+	/**
+	 * Metodo que llena la grafica
+	 * 
+	 * @param lista  lista de datos
+	 * @param color  Colores de las bvarras
+	 * @param series Series de la grafica
+	 * @throws IndiceFueraDeRango Error en el llenado
+	 */
 	public static void llenarGrafica(ListaSimple<Integer> lista, String[] color,
 			XYChart.Series<String, Number>... series) throws IndiceFueraDeRango {
 		for (Series<String, Number> serie : series) {
