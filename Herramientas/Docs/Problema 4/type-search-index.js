@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"fes.aragon.except","l":"IndiceFueraDeRango"},{"p":"fes.aragon.utilerias.dinamicas.listasimple","l":"ListaSimple"},{"p":"fes.aragon.utilerias.dinamicas.listasimple","l":"Nodo"},{"p":"fes.aragon.utilerias.dinamicas.pila","l":"Pila"},{"p":"fes.aragon.problemaCuatro.modelo","l":"Puntos"}]

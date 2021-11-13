@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
 
 import javax.swing.JOptionPane;
 
-import fes.aragon.operaciones.*;
+import fes.aragon.problemaDos.operaciones.Operaciones;
 
 public class VistaController {
 	@FXML

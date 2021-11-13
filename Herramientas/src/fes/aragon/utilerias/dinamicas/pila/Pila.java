@@ -36,6 +36,7 @@ public class Pila<E> {
 	 */
 	public void insertar(E dato) {
 		pila.agregarEnCola(dato);
+		datos++;
 	}
 
 	/**
@@ -78,6 +79,7 @@ public class Pila<E> {
 	 * @return Cantidad de datos
 	 */
 	public int getDatos() {
+		datos--;
 		return datos;
 	}
 

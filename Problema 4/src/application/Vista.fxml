@@ -17,7 +17,7 @@
             <Image url="@recursos/dragon.png" />
          </image>
       </ImageView>
-      <Pane fx:id="controlPane" layoutY="656.0" prefHeight="136.0" prefWidth="599.0">
+      <Pane fx:id="controlPane" layoutY="656.0" prefHeight="136.0" prefWidth="599.0" style="-fx-background-color: #FFE0E3;">
          <children>
             <ColorPicker fx:id="colorPicker" layoutX="28.0" layoutY="62.0" prefHeight="47.0" prefWidth="86.0" />
             <Label layoutX="31.0" layoutY="19.0" text="Color:">

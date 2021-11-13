@@ -12,7 +12,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import fes.aragon.except.IndiceFueraDeRango;
-import fes.aragon.herramientas.*;
+import fes.aragon.problemaUno.herramientas.*;
 import fes.aragon.utilerias.dinamicas.listasimple.ListaSimple;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -77,6 +77,7 @@ public class OrdenamientosController implements Initializable {
 	@FXML
 	public void evento(ActionEvent event) {
 		// Metodo burbuja
+		Ordenamientos.burbuja(listaB, seriesB);
 		scheduledExecutorServiceB = Executors.newSingleThreadScheduledExecutor();
 		scheduledExecutorServiceB.scheduleAtFixedRate(() -> {
 			Platform.runLater(() -> {
