@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VistaController">
+<Pane fx:id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DibujoController">
    <children>
       <ImageView fx:id="imagen" onMouseClicked="#eventoRaton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@recursos/dragon.png" />
+            <Image url="@recursos/imagen.jpeg" />
          </image>
       </ImageView>
       <Pane fx:id="controlPane" layoutY="656.0" prefHeight="136.0" prefWidth="599.0" style="-fx-background-color: #FFE0E3;">

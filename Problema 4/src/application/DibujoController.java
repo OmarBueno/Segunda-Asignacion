@@ -23,7 +23,7 @@ import javafx.scene.control.ChoiceBox;
 import fes.aragon.problemaCuatro.modelo.Puntos;
 import fes.aragon.utilerias.dinamicas.pila.*;
 
-public class VistaController implements Initializable {
+public class DibujoController implements Initializable {
 	@FXML
 	private Pane panel;
 	@FXML
@@ -145,6 +145,8 @@ public class VistaController implements Initializable {
 		panel.setMaxWidth(imagen.getImage().getWidth());
 		panel.setMaxHeight(imagen.getImage().getHeight() + controlPane.getHeight());
 		controlPane.setLayoutY(imagen.getImage().getHeight());
+		//controlPane.setPrefWidth(panel.getWidth());
+		//controlPane.setStyle("-fx-background-color: #FFE0E3;");
 		colorPicker.setValue(Color.RED);
 		imagenAux = new ImageView(imagen.getImage());
 		pixel = imagen.getImage().getPixelReader();

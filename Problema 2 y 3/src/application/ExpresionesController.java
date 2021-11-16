@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 import fes.aragon.problemaDos.operaciones.Operaciones;
 
-public class VistaController {
+public class ExpresionesController {
 	@FXML
 	private ImageView img;
 	@FXML

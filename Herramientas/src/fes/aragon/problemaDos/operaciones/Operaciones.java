@@ -11,6 +11,7 @@ import fes.aragon.utilerias.dinamicas.pila.Pila;
  *
  */
 public class Operaciones {
+
 	/**
 	 * metodo que evalua si una cadena esta correctamente cerrada por parentesis
 	 * 
@@ -114,37 +115,42 @@ public class Operaciones {
 			String posfija = "";
 			for (int i = 0; i < cadena.length(); i++) {
 				char c = cadena.charAt(i);
-				if (c >= '0' && c <= '9') {
-					posfija += c;
-					if (i == cadena.length() - 1) {
-						posfija += ' ';
-						break;
-					}
-					char d = cadena.charAt(i + 1);
-					while (d >= '0' && d <= '9') {
-						posfija += d;
-						i++;
+				if (c == ' ') {
+					continue;
+				} else {
+					if (c >= '0' && c <= '9') {
+						posfija += c;
 						if (i == cadena.length() - 1) {
+							posfija += ' ';
 							break;
 						}
-						d = cadena.charAt(i + 1);
-					}
-					posfija += ' ';
-				} else if (c >= '(' && c <= '/') {
-					while (!pila.estaVacia() && precedencia(pila.elementoSuperior(), c)) {
-						posfija += pila.extraer();
+						char d = cadena.charAt(i + 1);
+						while (d >= '0' && d <= '9') {
+							posfija += d;
+							i++;
+							if (i == cadena.length() - 1) {
+								break;
+							}
+							d = cadena.charAt(i + 1);
+						}
 						posfija += ' ';
-					}
-					if (pila.estaVacia() || c != ')') {
-						pila.insertar(c);
+					} else if (c >= '(' && c <= '/') {
+						while (!pila.estaVacia() && precedencia(pila.elementoSuperior(), c)) {
+							posfija += pila.extraer();
+							posfija += ' ';
+						}
+						if (pila.estaVacia() || c != ')') {
+							pila.insertar(c);
+						} else {
+							pila.extraer();
+						}
 					} else {
-						pila.extraer();
+						JOptionPane.showMessageDialog(null,
+								"Error en la entrada, debe ingresar solo digitos y operadores", "Error",
+								JOptionPane.ERROR_MESSAGE);
+						posfija = "";
+						break;
 					}
-				} else {
-					JOptionPane.showMessageDialog(null, "Error en la entrada, debe ingresar solo digitos y operadores",
-							"Error", JOptionPane.ERROR_MESSAGE);
-					posfija = "";
-					break;
 				}
 			}
 			while (!pila.estaVacia()) {
@@ -181,22 +187,14 @@ public class Operaciones {
 			return true;
 		} else if (op1 == '*') {
 			return true;
-		} else if (op1 == '+' && op2 == '*') {
-			return false;
-		} else if (op1 == '+' && op2 == '/') {
-			return false;
 		} else if (op1 == '+' && op2 == '+') {
 			return true;
-		} else if (op1 == '+' && op2 == '-') {
-			return false;
-		} else if (op1 == '-' && op2 == '*') {
-			return false;
-		} else if (op1 == '-' && op2 == '/') {
-			return false;
-		} else if (op1 == '-' && op2 == '+') {
+		} else if (op1 == '+') {
 			return false;
 		} else if (op1 == '-' && op2 == '-') {
 			return true;
+		} else if (op1 == '-') {
+			return false;
 		} else {
 			return false;
 		}
